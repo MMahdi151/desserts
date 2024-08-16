@@ -3,7 +3,7 @@ import React from "react";
 import { useCart } from "../context/cartContext";
 
 export default function Cart() {
-  const { cart, getTotalQuantity } = useCart();
+  const { cart, setCart, getTotalQuantity, getTotalPrice } = useCart();
 
   return (
     <section className="bg-white flex flex-col p-8 gap-6 self-start rounded-md">
@@ -45,15 +45,20 @@ export default function Cart() {
                 <XCircleIcon
                   strokeWidth={1.6}
                   className="w-5 h-5 text-rose-400"
+                  onClick={() => {
+                    setCart(
+                      cart.filter((cartItem) => cartItem.name !== item.name)
+                    );
+                  }}
                 />
               </div>
             ))}
           </div>
           <div className="flex items-center justify-between py-2">
             <p>Order Total</p>
-            <p className="font-bold text-2xl">${}</p>
+            <p className="font-bold text-2xl">${getTotalPrice.toFixed(2)}</p>
           </div>
-          <div className="flex gap-2 py-2 justify-center rounded-lg bg-rose-50">
+          <div className="flex gap-2 py-3 justify-center rounded-lg bg-rose-50">
             <TreePineIcon
               strokeWidth={1.6}
               className="text-green-600 w-5 h-5"
