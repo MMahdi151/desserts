@@ -1,8 +1,12 @@
+@import url("fonts.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @layer {
   body {
-    @apply text-amber-950;
+    @apply text-rose-950 bg-rose-50 selection:bg-rose-700 selection:text-rose-50;
   }
+}
+body {
+  font-family: redhat;
 }
