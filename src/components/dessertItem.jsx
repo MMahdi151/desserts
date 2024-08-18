@@ -26,12 +26,24 @@ export default function DessertItem() {
       {info.map((item, index) => (
         <div key={index} className="flex flex-col">
           <img
-            src={item.image.desktop}
-            className={`rounded-lg w-full ${
+            src={item.image.mobile}
+            className={`block sm:hidden rounded-lg w-full ${
               item.quantity && "ring-2 ring-rose-700"
             }`}
           />
-          <div className="bg-white w-2/3 -translate-y-1/2 rounded-full border-[1px] border-rose-900 font-semibold self-center overflow-hidden">
+          <img
+            src={item.image.tablet}
+            className={`hidden sm:block lg:hidden rounded-lg w-full ${
+              item.quantity && "ring-2 ring-rose-700"
+            }`}
+          />
+          <img
+            src={item.image.desktop}
+            className={`hidden lg:block rounded-lg w-full ${
+              item.quantity && "ring-2 ring-rose-700"
+            }`}
+          />
+          <div className="bg-white w-40 -translate-y-1/2 rounded-full border-[1px] border-rose-900 font-semibold self-center overflow-hidden">
             {!item.quantity ? (
               <button className="w-full h-10" onClick={() => addToCart(item)}>
                 <ShoppingCartIcon

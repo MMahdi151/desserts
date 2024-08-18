@@ -1,5 +1,5 @@
-import { XCircleIcon, TreePineIcon } from "lucide-react";
-import React, { useState } from "react";
+import { XCircleIcon } from "lucide-react";
+import React from "react";
 import { useCart } from "../context/cartContext";
 
 export default function Cart() {
@@ -36,7 +36,7 @@ export default function Cart() {
                       {item.quantity}x
                     </p>
                     <p className="text-rose-400">
-                      @{parseFloat(item.price).toFixed(2)}`
+                      @{parseFloat(item.price).toFixed(2)}
                     </p>
                     <p className="font-semibold text-rose-500">
                       ${parseFloat(item.quantity * item.price).toFixed(2)}
@@ -45,7 +45,7 @@ export default function Cart() {
                 </div>
                 <XCircleIcon
                   strokeWidth={1.6}
-                  className="w-5 h-5 text-rose-400"
+                  className="w-5 h-5 text-rose-400 cursor-pointer"
                   onClick={() => {
                     setCart(
                       cart.filter((cartItem) => cartItem.name !== item.name)
@@ -60,10 +60,7 @@ export default function Cart() {
             <p className="font-bold text-2xl">${getTotalPrice.toFixed(2)}</p>
           </div>
           <div className="flex gap-2 py-3 justify-center rounded-lg bg-rose-50">
-            <TreePineIcon
-              strokeWidth={1.6}
-              className="text-green-600 w-5 h-5"
-            />
+            <img src="images/icon-carbon-neutral.svg" className="w-5 h-5" />
             This is a<span className="font-semibold">carbon-neutral</span>
             delivery
           </div>
