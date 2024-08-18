@@ -1,9 +1,10 @@
 import { XCircleIcon, TreePineIcon } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../context/cartContext";
 
 export default function Cart() {
-  const { cart, setCart, getTotalQuantity, getTotalPrice } = useCart();
+  const { cart, setCart, getTotalQuantity, getTotalPrice, setConfirm } =
+    useCart();
 
   return (
     <section className="bg-white flex flex-col p-8 gap-6 self-start rounded-md">
@@ -66,7 +67,10 @@ export default function Cart() {
             This is a<span className="font-semibold">carbon-neutral</span>
             delivery
           </div>
-          <button className="bg-rose-700 py-3 text-white rounded-full text-lg">
+          <button
+            className="bg-rose-700 py-3 text-white rounded-full text-lg"
+            onClick={() => setConfirm(true)}
+          >
             Confirm Order
           </button>
         </>

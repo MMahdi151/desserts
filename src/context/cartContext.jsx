@@ -6,6 +6,7 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [confirm, setConfirm] = useState(false);
 
   function addToCart(item) {
     const exists = cart.find((cartItem) => cartItem.name === item.name);
@@ -43,7 +44,7 @@ export const CartProvider = ({ children }) => {
     return cart.reduce((total, item) => total + item.quantity, 0);
   };
   const getTotalPrice = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (total, item) => total + item.price * item.quantity,
     0
   );
 
@@ -56,6 +57,8 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         getTotalQuantity,
         getTotalPrice,
+        confirm,
+        setConfirm,
       }}
     >
       {children}
